@@ -28,7 +28,11 @@ private:
 		PROCESS_INFORMATION procInfo;
 		memset(&procInfo, 0, sizeof(PROCESS_INFORMATION));
 
-		if (!CreateProcessW(NULL, path, NULL, NULL, TRUE, NULL, NULL, NULL, &si, &procInfo))
+		bool ret = CreateProcessW(NULL, path, NULL, NULL, TRUE, NULL, NULL, NULL, &si, &procInfo);
+
+		free(path);
+
+		if (!ret)
 		{
 			std::cerr << "Error creating process cmd.exe" << std::endl;
 			ExitThread(GetLastError());
