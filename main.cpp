@@ -35,7 +35,6 @@ private:
 		}
 
 		WaitForSingleObject(procInfo.hProcess, INFINITE);
-		CloseHandle(procInfo.hThread);
 		CloseHandle(procInfo.hProcess);
 
 		return EXIT_SUCCESS;
